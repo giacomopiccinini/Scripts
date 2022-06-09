@@ -2,8 +2,8 @@
 
 # Clear outputs from notebook (ideally before pushing to git)
 
-list=($(find "$PWD" | grep .ipynb_checkpoints)) 
+list=($(find "$PWD" | grep .ipynb | grep -v checkpoints)) 
 
 for str in ${list[@]}; do
-  rm -r $str
+  jupyter nbconvert --clear-output --inplace $str
 done
